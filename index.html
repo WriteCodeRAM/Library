@@ -5,10 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
 </head>
 <body>
+
+    <nav>
+        <h1>Library</h1>
+        <button>+</button>
+    </nav>
+
+
+   <section>
+    <div class="book-container">
+        <!-- <div class="card"> -->
+            <!-- <ul class="book">
+                <li>Book Title: A Game Of Thrones</li>
+                <li>Author: George R.R. Martin</li>
+                <li>Pages Title: 694</li>
+                <li>Read: true</li>
+            </ul> -->
+        <!-- </div> -->
+
+    </div>
+   </section>
+
+
+
 
     <form action="" id="myform">
 
@@ -19,12 +45,12 @@
 
     
         <label for="Author's Name">*Author's Name</label>
-           <input type="text" name="author_name" id="author_name" required minlength="2" maxlength="20">
+           <input type="text" name="author_name" id="author_name" required minlength="2" maxlength="24">
 
     
 
            <label for="Book Title">*Book Title</label>
-           <input type="text" name="book_title" id="book_title" required minlength="1" maxlength="">
+           <input type="text" name="book_title" id="book_title" required minlength="1" maxlength="32">
 
 
            
@@ -50,5 +76,8 @@
          <button type="button" id="submit">Let's Read!</button>
        </form>
     
+       <footer>
+        <p>Created by <a href="https://github.com/WriteCodeRAM">WriteCodeRAM</a></p>
+       </footer>
 </body>
 </html>

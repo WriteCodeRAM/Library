@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Kalam', cursive;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: solid 2px #444;
+    padding: 12px;
+}
+
+h1{
+    cursor: pointer;
+    font-size: 2rem;
+}
+h1:hover{
+    transition: 0.2s ease-in-out;
+    border-bottom: dotted 2px #444;
+}
+button{
+    width: 50px;
+    height: 50px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid #444;
+    text-align: center;
+    display: inline-block;
+    /* vertical-align: middle; */
+    position: relative;
+    z-index: 10;
+    color: #333;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    transition: 0.4s ease;
+}
+
+section{
+    height: 80vh;
+    padding: 12px
+    ; 
+    background-color: #f0eef1;
+}
+
+.book-container{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.book{
+    list-style:square;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+}
+
+.card{
+    height: 250px;
+    width:250px;
+    border: solid 2px #444; 
+    border-radius: 20%;
+    padding: 20px;
+}
+
+form{
+/* display: none; */
+}
+
+a:any-link{
+    list-style: none;
+    text-decoration: none;
+    color: #333;
+}
+
+footer{
+    /* border-top: solid 2px #444; */
+    padding: 12px;
+    text-align: center;
+}
+
+a:hover{
+    text-decoration: underline;
+
+}
