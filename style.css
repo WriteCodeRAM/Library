@@ -52,13 +52,6 @@ button:hover{
     transition: 0.4s ease;
 }
 
-/* section{
-    height: 80vh;
-    padding: 12px
-    ; 
-    background-color: #f0eef1;
-} */
-
 .book-container{
     display: flex;
     height: 80vh;
@@ -155,3 +148,18 @@ align-items: center;
   .modal.hide {
     display: none;
   }
+
+  .trash{
+    width: 24px;
+    height: 24px;
+  }
+
+ .trash:hover{
+    background-color: red;
+    border-radius: 20%;
+    cursor: pointer;
+ }
+
+ [index ]{
+    /* display:none; */
+ }
