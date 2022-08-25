@@ -15,69 +15,68 @@
 
     <nav>
         <h1>Library</h1>
-        <button>+</button>
+        <button class="new-book">+</button>
     </nav>
 
 
-   <section>
+
     <div class="book-container">
-        <!-- <div class="card"> -->
-            <!-- <ul class="book">
+        <!-- <div class="card">
+            <ul class="book">
                 <li>Book Title: A Game Of Thrones</li>
                 <li>Author: George R.R. Martin</li>
                 <li>Pages Title: 694</li>
                 <li>Read: true</li>
-            </ul> -->
-        <!-- </div> -->
+            </ul>
+        </div> -->
+
+        <div class="modal hide">
+        <form action="" id="myform">
+
+
+            <label for="Author's Name">*Author's Name</label>
+
+               <input type="text" name="author_name" id="author_name" required minlength="2" maxlength="28">
+    
+               <label for="Book Title">*Book Title</label>
+               <input type="text" name="book_title" id="book_title" required minlength="1" maxlength="35">
+    
+                <label for="pages">*Number of Pages</label>
+                <input type="number" name="pages" id="pages" required min="1" max="10000">
+            
+            <div class="">
+                <label for="read">Have you read this book?</label>
+                <input type="checkbox" id="checkbox">
+            </div>
+    
+             <button type="button" id="submit">Let's Read!</button>
+           </form>
+        </div>
 
     </div>
-   </section>
 
 
 
+    <!-- <form action="" id="myform">
 
-    <form action="" id="myform">
-
-        
-
-
-    
-
-    
         <label for="Author's Name">*Author's Name</label>
            <input type="text" name="author_name" id="author_name" required minlength="2" maxlength="24">
-
-    
 
            <label for="Book Title">*Book Title</label>
            <input type="text" name="book_title" id="book_title" required minlength="1" maxlength="32">
 
-
-           
-    
-
-
             <label for="pages">*Number of Pages</label>
-            <input type="number" name="pages" id="pages" required min="1">
-
-    
-
+            <input type="number" name="pages" id="pages" required min="1" max="10000">
 
             <label for="read">Have you read this book?</label>
             <input type="checkbox" id="checkbox">
 
-
-
-
-
-
-    
-    
          <button type="button" id="submit">Let's Read!</button>
-       </form>
+       </form> -->
     
        <footer>
         <p>Created by <a href="https://github.com/WriteCodeRAM">WriteCodeRAM</a></p>
+        <img src="icons8-github-30.png" alt="github logo">
        </footer>
 </body>
 </html>
