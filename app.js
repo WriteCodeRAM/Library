@@ -11,7 +11,12 @@ const form = document.querySelector('#myform');
 const newBookBtn = document.querySelector('.new-book');
 const modal = document.querySelector('.modal');
 
-// const deleteBookBtn = document.createElement('img');
+//add a new book button that brings up a form(modal) allowing users to input details for new book
+newBookBtn.addEventListener('click', showForm);
+
+function showForm() {
+  form.classList.add('show');
+}
 
 newBookBtn.addEventListener('click', () => {
   modal.classList.remove('hide');
@@ -26,8 +31,8 @@ document.querySelector('.modal form').addEventListener('click', (e) => {
 });
 
 let myLibrary = [];
-// { title: 'escaping tutorial hell', author: 'randal', pages: 667, read: true }
 
+//Constructor
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -51,9 +56,10 @@ function addBookToLibrary() {
     );
     //insert book into array
     myLibrary.push(newBook);
+    history.push(newBook);
     displayBook(myLibrary);
   } else {
-    alert('please fill out all *required* fields, max page number is 10000');
+    alert('fill out all *required* fields, max page number set at 10000');
   }
   //reset form inputs
   document.getElementById('myform').reset();
@@ -64,17 +70,27 @@ submitButton.addEventListener('click', addBookToLibrary);
 //Todos
 
 //loop through array and display each book on the page using cards
+
+//history fixes bug with users deleting and no longer being able to add to library
+let history = [];
 let i = 0;
+
 function displayBook(arr) {
-  for (i; i < arr.length; i++) {
+  for (i; i < history.length; i++) {
+    console.log(i);
     let div = document.createElement('div');
     div.setAttribute('index', i);
     div.classList.add('card');
     bookContainer.appendChild(div);
+    let readStatusBtn = document.createElement('button');
+    readStatusBtn.classList.add('readBtn');
+    readStatusBtn.innerText = 'READ';
 
     //connecting trash icon to card
     const deleteBookBtn = document.createElement('img');
 
+    let div2 = document.createElement('div');
+    div2.classList.add('div2');
     deleteBookBtn.setAttribute('src', 'icons8-trash.svg');
     deleteBookBtn.setAttribute('index', i);
     deleteBookBtn.classList.add('trash');
@@ -89,18 +105,20 @@ function displayBook(arr) {
     // for (const [key, value] of Object.entries(arr[i])) {
     //   console.log(`${key}: ${value}`);
     // }
-    li0.innerText = `Title: ${arr[i].title}`;
-    li1.innerText = `Author: ${arr[i].author}`;
-    li2.innerText = `# Of Pages: ${arr[i].pages}`;
-    li3.innerText = `Read it already? ${arr[i].read}`;
+    li0.innerText = `Title: ${history[i].title}`;
+    li1.innerText = `Author: ${history[i].author}`;
+    li2.innerText = `# Of Pages: ${history[i].pages}`;
+    li3.innerText = `Read it already? ${history[i].read}`;
 
     ul.appendChild(li0);
     ul.appendChild(li1);
     ul.appendChild(li2);
     ul.appendChild(li3);
-    ul.appendChild(deleteBookBtn);
+    div2.appendChild(readStatusBtn);
+    div2.appendChild(deleteBookBtn);
     div.appendChild(ul);
     // div.appendChild(deleteBookBtn);
+    div.appendChild(div2);
     modal.classList.add('hide');
 
     // add a button on each book's display to remove book from library
@@ -118,25 +136,8 @@ function displayBook(arr) {
   }
 }
 
-//add a new book button that brings up a form(modal) allowing users to input details for new book
-
-newBookBtn.addEventListener('click', showForm);
-
-function showForm() {
-  form.classList.add('show');
-}
-
-// add a button on each book's display to remove book from library
-
-// function removeBookFromLibrary() {
-//   const index = deleteBookBtn.getAttribute('index');
-//   myLibrary.pop(index);
-
-//   const selectedCard = document.querySelector(`[index="${index}"]`); // select with "index" set to "i" exactly.
-
-//   selectedCard.remove();
-// }
-
-// deleteBookBtn.addEventListener('click', removeBookFromLibrary);
-
+//LAST STEP
+//Figure out how to connect function to each book's .read value
 //add a button on each book display to change its read status
+
+Book.prototype.readStatus = function () {};
