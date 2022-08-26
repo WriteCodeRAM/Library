@@ -11,7 +11,7 @@ const form = document.querySelector('#myform');
 const newBookBtn = document.querySelector('.new-book');
 const modal = document.querySelector('.modal');
 
-//add a new book button that brings up a form(modal) allowing users to input details for new book
+//new book button that brings up a form(modal) allowing users to input details for new book
 newBookBtn.addEventListener('click', showForm);
 
 function showForm() {
@@ -30,7 +30,11 @@ document.querySelector('.modal form').addEventListener('click', (e) => {
   e.stopPropagation();
 });
 
+//represent the current books on screen
 let myLibrary = [];
+
+//history fixes bug with users deleting and no longer being able to add to library, shows all books deleted and current
+let history = [];
 
 //Constructor
 function Book(title, author, pages, read) {
@@ -54,7 +58,8 @@ function addBookToLibrary() {
       pageInput.value,
       checkboxInput.checked
     );
-    //insert book into array
+
+    //insert book into arrays
     myLibrary.push(newBook);
     history.push(newBook);
     displayBook(myLibrary);
@@ -67,24 +72,42 @@ function addBookToLibrary() {
 
 submitButton.addEventListener('click', addBookToLibrary);
 
-//Todos
-
 //loop through array and display each book on the page using cards
 
-//history fixes bug with users deleting and no longer being able to add to library
-let history = [];
 let i = 0;
-
-function displayBook(arr) {
+function displayBook() {
   for (i; i < history.length; i++) {
-    console.log(i);
     let div = document.createElement('div');
     div.setAttribute('index', i);
     div.classList.add('card');
     bookContainer.appendChild(div);
+
     let readStatusBtn = document.createElement('button');
+    readStatusBtn.setAttribute('index', i);
     readStatusBtn.classList.add('readBtn');
+
+    history[i].read
+      ? readStatusBtn.classList.add('true')
+      : readStatusBtn.classList.add('false');
     readStatusBtn.innerText = 'READ';
+
+    //Change read status
+    //kind of a workaround to step 6 but it still works
+    function changeStatus() {
+      const buttonID = readStatusBtn.getAttribute('index');
+      if (!history[buttonID].read) {
+        readStatusBtn.classList.remove('false');
+        readStatusBtn.classList.add('true');
+        history[buttonID].read = true;
+        li3.innerText = `Read it already? ${history[buttonID].read}`;
+      } else {
+        readStatusBtn.classList.remove('true');
+        readStatusBtn.classList.add('false');
+        history[buttonID].read = false;
+        li3.innerText = `Read it already? ${history[buttonID].read}`;
+      }
+    }
+    readStatusBtn.addEventListener('click', changeStatus);
 
     //connecting trash icon to card
     const deleteBookBtn = document.createElement('img');
@@ -117,7 +140,6 @@ function displayBook(arr) {
     div2.appendChild(readStatusBtn);
     div2.appendChild(deleteBookBtn);
     div.appendChild(ul);
-    // div.appendChild(deleteBookBtn);
     div.appendChild(div2);
     modal.classList.add('hide');
 
@@ -127,8 +149,7 @@ function displayBook(arr) {
       const index = deleteBookBtn.getAttribute('index');
       myLibrary.pop(index);
 
-      const selectedCard = document.querySelector(`[index="${index}"]`); // select with "index" set to "i" exactly.
-
+      const selectedCard = document.querySelector(`[index="${index}"]`);
       selectedCard.remove();
     }
 
@@ -139,5 +160,12 @@ function displayBook(arr) {
 //LAST STEP
 //Figure out how to connect function to each book's .read value
 //add a button on each book display to change its read status
+//so how can I connect this function to the button
+//believe its going to be similar to what I did with trash btn
 
-Book.prototype.readStatus = function () {};
+Book.prototype.testing = function () {
+  console.log('testing');
+};
+
+//essential I want to run
+//myLibrary[index].changeStatus() on the click of the read button
