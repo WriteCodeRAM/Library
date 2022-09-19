@@ -36,12 +36,13 @@ let myLibrary = [];
 //history fixes bug with users deleting and no longer being able to add to library, shows all books deleted and current
 let history = [];
 
-//Constructor
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
 function addBookToLibrary() {
